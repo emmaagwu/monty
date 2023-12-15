@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * handleError - Displays appropriate error messages based on the error code.
+ * handleErrors - Displays appropriate error messages based on the error code.
  * @errorCode: The error codes and their meanings:
  * (1) => User provides no file or more than one file to the program.
  * (2) => The provided file cannot be opened or read.

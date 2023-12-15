@@ -134,7 +134,7 @@ void callFunction(op_func func, char *op, char *val, int ln, int format)
 			handleErrors(5, ln);
 		for (i = 0; val[i] != '\0'; i++)
 		{
-			if (!isdigit(val[i]))
+			if (isdigit(val[i]) == 0)
 				handleErrors(5, ln);
 		}
 		node = createNode(atoi(val) * flag);

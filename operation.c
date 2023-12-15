@@ -8,18 +8,19 @@
 void mulNodes(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top;
-    if (!stack || !(*stack) || !((*stack)->next))
-    {
-        handleMoreErrors(8, line_number, "mul");
-        return;
-    }
 
-    top = *stack;
-    *stack = top->next;
+	if (!stack || !(*stack) || !((*stack)->next))
+	{
+		handleMoreErrors(8, line_number, "mul");
+		return;
+	}
 
-    (*stack)->n *= top->n;
-    free(top);
-    (*stack)->prev = NULL;
+	top = *stack;
+	*stack = top->next;
+
+	(*stack)->n *= top->n;
+	free(top);
+	(*stack)->prev = NULL;
 }
 
 /**
@@ -29,25 +30,25 @@ void mulNodes(stack_t **stack, unsigned int line_number)
  */
 void modNodes(stack_t **stack, unsigned int line_number)
 {
-    stack_t *top;
+	stack_t *top;
 
-    if (!stack || !(*stack) || !((*stack)->next))
-    {
-        handleMoreErrors(8, line_number, "mod");
-        return;
-    }
+	if (!stack || !(*stack) || !((*stack)->next))
+	{
+		handleMoreErrors(8, line_number, "mod");
+		return;
+	}
 
-    if ((*stack)->n == 0)
-    {
-        handleMoreErrors(9, line_number);
-        return;
-    }
+	if ((*stack)->n == 0)
+	{
+		handleMoreErrors(9, line_number);
+		return;
+	}
 
-    top = *stack;
-    *stack = top->next;
+	top = *stack;
+	*stack = top->next;
 
-    (*stack)->n %= top->n;
-    free(top);
-    (*stack)->prev = NULL;
+	(*stack)->n %= top->n;
+	free(top);
+	(*stack)->prev = NULL;
 }
 

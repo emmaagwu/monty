@@ -3,25 +3,25 @@
 /**
  * pushToStack - Adds a node to the stack.
  * @newNode: Pointer to the new node.
- * @line_number: Integer representing the line number of the opcode.
+ * @ln: Integer representing the line number of the opcode.
  */
-void pushToStack(stack_t **newNode, __attribute__((unused)) unsigned int line_number)
+void pushToStack(stack_t **newNode, __attribute__((unused)) unsigned int ln)
 {
-    stack_t *tmp;
+	stack_t *tmp;
 
-    if (!newNode || !(*newNode))
-        exit(EXIT_FAILURE);
+	if (!newNode || !(*newNode))
+		exit(EXIT_FAILURE);
 
-    if (stackTop == NULL)
-    {
-        stackTop = *newNode;
-        return;
-    }
+	if (stackTop == NULL)
+	{
+		stackTop = *newNode;
+		return;
+	}
 
-    tmp = stackTop;
-    stackTop = *newNode;
-    stackTop->next = tmp;
-    tmp->prev = stackTop;
+	tmp = stackTop;
+	stackTop = *newNode;
+	stackTop->next = tmp;
+	tmp->prev = stackTop;
 }
 
 /**
@@ -31,19 +31,19 @@ void pushToStack(stack_t **newNode, __attribute__((unused)) unsigned int line_nu
  */
 void printStack(stack_t **stack, unsigned int line_number)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    (void)line_number;
+	(void)line_number;
 
-    if (!stack)
-        exit(EXIT_FAILURE);
+	if (!stack)
+		exit(EXIT_FAILURE);
 
-    temp = *stack;
-    while (temp != NULL)
-    {
-        printf("%d\n", temp->n);
-        temp = temp->next;
-    }
+	temp = *stack;
+	while (temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
 }
 
 /**
@@ -53,18 +53,18 @@ void printStack(stack_t **stack, unsigned int line_number)
  */
 void popFromStack(stack_t **stack, unsigned int line_number)
 {
-    stack_t *tmp;
+	stack_t *tmp;
 
-    if (!stack || !(*stack))
-        handleMoreErrors(7, line_number);
+	if (!stack || !(*stack))
+		handleMoreErrors(7, line_number);
 
-    tmp = *stack;
-    *stack = tmp->next;
+	tmp = *stack;
+	*stack = tmp->next;
 
-    if (*stack != NULL)
-        (*stack)->prev = NULL;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
 
-    free(tmp);
+	free(tmp);
 }
 
 /**
@@ -74,9 +74,9 @@ void popFromStack(stack_t **stack, unsigned int line_number)
  */
 void printTopStack(stack_t **stack, unsigned int line_number)
 {
-    if (!stack || !(*stack))
-        handleMoreErrors(6, line_number);
+	if (!stack || !(*stack))
+		handleMoreErrors(6, line_number);
 
-    printf("%d\n", (*stack)->n);
+	printf("%d\n", (*stack)->n);
 }
 
